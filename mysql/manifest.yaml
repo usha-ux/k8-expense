@@ -22,5 +22,5 @@ spec:
         purpose: expense
     spec:
       containers:
-      - name: mysql
-        image: usha43/deployment:1.0.0
+      - name: nginx
+        image: usha43/mysql:1.0.0
