@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: expense
+  labels:
+    app: backend
+    tier: backend
+    purpose: expense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      tier: backend
+      purpose: expense
+  template:
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+        purpose: expense
+    spec:
+      containers:
+      - name: nginx
+        image: usha43/backend:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: backend
+  namespace: expense
+spec:
+  selector:
+    app: backend
+    tier: backend
+    purpose: expense
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+     
