@@ -23,7 +23,9 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: usha43/backend:1.1.0
+        image: usha43/backend:1.2.0
+        ports:
+          containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
