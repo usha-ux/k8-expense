@@ -17,8 +17,8 @@ spec:
   template:
     metadata:
       labels:
-        app:frontend
-        tier:frontend
+        app: frontend
+        tier: frontend
         purpose: expense
     spec:
       containers:
