@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: expense
+  labels:
+    app: frontend
+    tier: frontend
+    purpose: expense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      tier: frontend
+      purpose: expense
+  template:
+    metadata:
+      labels:
+        app:frontend
+        tier:frontend
+        purpose: expense
+    spec:
+      containers:
+      - name: nginx
+        image: usha43/backend:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: frontend
+  namespace: expense
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+    tier: web
+    purpose: expense
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+     
