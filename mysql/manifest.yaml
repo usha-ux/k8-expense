@@ -24,3 +24,18 @@ spec:
       containers:
       - name: nginx
         image: usha43/mysql:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: mysql
+spec:
+  selector:
+    app: mysql
+    tier: mysql
+    purpose: expense
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
+     
